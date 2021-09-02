@@ -75,10 +75,8 @@ dirs = listDirs(__dirname);
 
 server = http.createServer(function (req, res) {
   var url = req.url;
-
   // 调试 examples
   console.log(url);
-
   // Process axios itself
   if (/axios\.min\.js$/.test(url)) {
     // 原来的代码 是 axios.min.js
@@ -94,53 +92,7 @@ server = http.createServer(function (req, res) {
     pipeFileToResponse(res, '../dist/axios.map', 'text/javascript');
     return;
   }
-  if (/axios\.amd\.min\.js$/.test(url)) {
-    pipeFileToResponse(res, '../dist/axios.amd.min.js', 'text/javascript');
-    return;
-  }
-  if (/axios\.amd\.min\.map$/.test(url)) {
-    pipeFileToResponse(res, '../dist/axios.amd.min.map', 'text/javascript');
-    return;
-  }
-
-  // Process /
-  if (url === '/' || url === '/index.html') {
-    send200(res, getIndexTemplate());
-    return;
-  }
-
-  // Format request */ -> */index.html
-  if (/\/$/.test(url)) {
-    url += 'index.html';
-  }
-
-  // Format request /get -> /get/index.html
-  var parts = url.split('/');
-  if (dirs.indexOf(parts[parts.length - 1]) > -1) {
-    url += '/index.html';
-  }
-
-  // Process index.html request
-  if (/index\.html$/.test(url)) {
-    if (fs.existsSync(path.join(__dirname, url))) {
-      pipeFileToResponse(res, url, 'text/html');
-    } else {
-      send404(res);
-    }
-  }
-
-  // Process server request
-  else if (new RegExp('(' + dirs.join('|') + ')\/server').test(url)) {
-    if (fs.existsSync(path.join(__dirname, url + '.js'))) {
-      require(path.join(__dirname, url + '.js'))(req, res);
-    } else {
-      send404(res);
-    }
-  }
-  else {
-    send404(res);
-  }
-});
+})
 
 const PORT = argv.p || 3000;
 
