@@ -2,32 +2,6 @@
 
 ## 1. 前言
 
->你好，我是[若川](https://lxchuan12.gitee.io)，微信搜索[「若川视野」](https://mp.weixin.qq.com/s/c3hFML3XN9KCUetDOZd-DQ)关注我，专注前端技术分享。欢迎加我微信`ruochuan12`，加群交流学习。
-
->这是`学习源码整体架构系列`第六篇。整体架构这词语好像有点大，姑且就算是源码整体结构吧，主要就是学习是代码整体结构，不深究其他不是主线的具体函数的实现。本篇文章学习的是实际仓库的代码。
-
->[本文仓库地址](https://github.com/lxchuan12/axios-analysis.git)：`git clone https://github.com/lxchuan12/axios-analysis.git`
-
->**要是有人说到怎么读源码，正在读文章的你能推荐我的源码系列文章，那真是太好了**。
-
-`学习源码整体架构系列`文章如下：
->1.[学习 jQuery 源码整体架构，打造属于自己的 js 类库](https://juejin.im/post/5d39d2cbf265da1bc23fbd42)<br>
->2.[学习 underscore 源码整体架构，打造属于自己的函数式编程类库](https://juejin.im/post/5d4bf94de51d453bb13b65dc)<br>
->3.[学习 lodash 源码整体架构，打造属于自己的函数式编程类库](https://juejin.im/post/5d767e1d6fb9a06b032025ea)<br>
->4.[学习 sentry 源码整体架构，打造属于自己的前端异常监控SDK](https://juejin.im/post/5dba5a39e51d452a2378348a)<br>
->5.[学习 vuex 源码整体架构，打造属于自己的状态管理库](https://juejin.im/post/5dd4e61a6fb9a05a5c010af0)<br>
->6.[学习 axios 源码整体架构，打造属于自己的请求库](https://juejin.im/post/5df349b5518825123751ba66)<br>
->7.[学习 koa 源码的整体架构，浅析koa洋葱模型原理和co原理](https://juejin.im/post/5e69925cf265da571e262fe6)<br>
->8.[学习 redux 源码整体架构，深入理解 redux 及其中间件原理](https://juejin.im/post/5ee63b7d51882542fc6265ad)
-
-感兴趣的读者可以点击阅读。<br>
-其他源码计划中的有：[`express`](https://github.com/lxchuan12/express-analysis)、[`vue-rotuer`](https://github.com/lxchuan12/vue-router-analysis)、[`react-redux`](https://github.com/lxchuan12/react-redux-analysis) 等源码，不知何时能写完（哭泣），欢迎持续关注我（若川）。
-
-源码类文章，一般阅读量不高。已经有能力看懂的，自己就看了。不想看，不敢看的就不会去看源码。<br>
-所以我的文章，尽量写得让想看源码又不知道怎么看的读者能看懂。
-
-本文比较长，手机上阅读，可以划到有图的地方直接看文中的几张图即可。建议点赞或收藏后在电脑上阅读，按照文中调试方式自己调试或许更容易吸收消化。
-
 **导读**<br>
 文章详细介绍了 `axios` 调试方法。详细介绍了 `axios` 构造函数，拦截器，取消等功能的实现。最后还对比了其他请求库。
 
@@ -713,7 +687,7 @@ Axios.prototype.request = function request(config) {
     也就是保证了请求前拦截器先执行，然后发送请求，再响应拦截器执行这样的顺序<br>
     也就是为啥最后还是可以`then`，`catch`方法的缘故。<br>
 
-如果读者对`Promise`不熟悉，建议读阮老师的书籍《ES6 标准入门》。 
+如果读者对`Promise`不熟悉，建议读阮老师的书籍《ES6 标准入门》。
 [阮一峰老师 的 ES6 Promise-resolve](http://es6.ruanyifeng.com/#docs/promise#Promise-resolve) 和 [JavaScript Promise迷你书（中文版）](http://liubin.org/promises-book/)
 
 ```js
@@ -796,8 +770,8 @@ node ./examples/server.js -p 5000
 
 ```js
 var chain = [
-  '请求成功拦截2', '请求失败拦截2',  
-  '请求成功拦截1', '请求失败拦截1',  
+  '请求成功拦截2', '请求失败拦截2',
+  '请求成功拦截1', '请求失败拦截1',
   dispatch,  undefined,
   '响应成功拦截1', '响应失败拦截1',
   '响应成功拦截2', '响应失败拦截2',
@@ -1533,27 +1507,3 @@ FCC成都社区负责人水歌开源的[KoAJAX](https://github.com/EasyWebApp/Ko
 [逐行解析Axios源码](https://juejin.im/post/5d501512518825159e3d7be6)<br>
 [[译]axios 是如何封装 HTTP 请求的](https://juejin.im/post/5d906269f265da5ba7451b02)<br>
 [知乎@Lee : TypeScript 重构 Axios 经验分享](https://zhuanlan.zhihu.com/p/50859466)<br>
-
-## 笔者另一个系列
-
-[面试官问：JS的继承](https://juejin.im/post/5c433e216fb9a049c15f841b)<br>
-[面试官问：JS的this指向](https://juejin.im/post/5c0c87b35188252e8966c78a)<br>
-[面试官问：能否模拟实现JS的call和apply方法](https://juejin.im/post/5bf6c79bf265da6142738b29)<br>
-[面试官问：能否模拟实现JS的bind方法](https://juejin.im/post/5bec4183f265da616b1044d7)<br>
-[面试官问：能否模拟实现JS的new操作符](https://juejin.im/post/5bde7c926fb9a049f66b8b52)<br>
-
-## 关于
-
-作者：常以**若川**为名混迹于江湖。前端路上 | PPT爱好者 | 所知甚少，唯善学。<br>
-[若川的博客](https://lxchuan12.gitee.io)，使用`vuepress`重构了，阅读体验可能更好些<br>
-[掘金专栏](https://juejin.cn/user/1415826704971918/posts)，欢迎关注~<br>
-[`segmentfault`前端视野专栏](https://segmentfault.com/blog/lxchuan12)，欢迎关注~<br>
-[知乎前端视野专栏](https://zhuanlan.zhihu.com/lxchuan12)，欢迎关注~<br>
-[语雀前端视野专栏](https://www.yuque.com/lxchuan12/blog)，新增语雀专栏，欢迎关注~<br>
-[github blog](https://github.com/lxchuan12/blog)，相关源码和资源都放在这里，求个`star`^_^~
-
-## 欢迎加微信交流 微信公众号
-
-可能比较有趣的微信公众号，长按扫码关注（**回复pdf获取前端优质书籍pdf**）。欢迎加笔者微信`ruochuan12`（注明来源，基本来者不拒），拉您进【前端视野交流群】，长期交流学习~
-
-![若川视野](https://github.com/lxchuan12/blog/raw/master/docs/about/wechat-official-accounts-mini.jpg)

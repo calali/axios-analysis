@@ -12,8 +12,10 @@ var defaults = require('./defaults');
  * @param {Object} defaultConfig The default config for the instance
  * @return {Axios} A new instance of Axios
  */
+//TODO 关键函数
 function createInstance(defaultConfig) {
   var context = new Axios(defaultConfig);
+  //TODO 这里有必要重点重点看下
   var instance = bind(Axios.prototype.request, context);
 
   // Copy axios.prototype to instance

@@ -15,6 +15,6 @@ axios.get(URL, { params: BODY })
   .catch(handleFailure);
 
 // POST
-axios.post(URL, BODY)
-  .then(handleSuccess)
-  .catch(handleFailure);
+// axios.post(URL, BODY)
+//   .then(handleSuccess)
+//   .catch(handleFailure);
